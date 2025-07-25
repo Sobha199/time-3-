@@ -13,7 +13,7 @@ form_headers = [
 ]
 
 # Load login credentials and logo
-login_df = pd.read_csv("login_coder.csv")
+login_df = pd.read_csv("Login coder (1).csv")
 logo = Image.open("s2m-logo.png")
 
 # Setup session logs path
