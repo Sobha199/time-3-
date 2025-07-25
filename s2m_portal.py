@@ -148,7 +148,7 @@ def dashboard_page():
     if os.path.exists("data.csv"):
         df_download = pd.read_csv("data.csv")
         df_download = df_download[df_download["Emp ID"] == st.session_state.emp_id]
-        st.download_button("Download as Excel", data=df_download.to_excel(index=False, engine='openpyxl'), file_name="completed_charts.xlsx")
+        from io import BytesIO  # Convert DataFrame to Excel in memory output = BytesIO() with pd.ExcelWriter(output, engine='openpyxl') as writer:     df_download.to_excel(writer, index=False) output.seek(0)  # Streamlit download button st.download_button(     label="Download as Excel",     data=output,     file_name="completed_charts.xlsx",     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" )
     else:
         st.info("No chart data available.")
 
