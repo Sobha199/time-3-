@@ -23,7 +23,7 @@ def login_page():
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     if st.button("Login"):
-        if username in login_df["Username"].values:
+        if username in login_df["username"].values:
             user_row = login_df[login_df["Username"] == username].iloc[0]
             if password == str(user_row["Password"]):
                 st.session_state.logged_in = True
