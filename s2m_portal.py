@@ -42,9 +42,6 @@ if username in login_df["user_name"].values:
                 st.experimental_rerun()
             else:
                 st.error("Incorrect password")
-        else:
-            st.error("Username not found")
-
 def form_page():
     st.image(logo, width=150)
     st.markdown("<h2 style='color:skyblue;'>Form Entry</h2>", unsafe_allow_html=True)
