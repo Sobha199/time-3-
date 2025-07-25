@@ -23,7 +23,14 @@ def login_page():
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     if st.button("Login"):
-        if username in login_df["User Name"].values:
+        login_df = pd.read_csv("login coder 1.csv")
+
+# ✅ Sanitize column names to avoid KeyErrors
+login_df.columns = login_df.columns.str.strip().str.lower().str.replace(" ", "_")
+
+# ✅ Now access the normalized column
+if username in login_df["user_name"].values:
+
             user_row = login_df[login_df["Username"] == username].iloc[0]
             if password == str(user_row["Password"]):
                 st.session_state.logged_in = True
